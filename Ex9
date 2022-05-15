@@ -1,1 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+
+int main(){
+
+    char frase[40];
+    int i;
+    printf("Digite uma frase: ");
+    fgets(frase,40,stdin);
+    
+    printf("%s", frase);
+    
+    
+    return 0;
+
+
+}
