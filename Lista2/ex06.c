@@ -4,7 +4,7 @@
 int main (){  
 
     int *v;
-    int tam, par, impar;
+    int tam, par = 0, impar = 0;
 
     printf("Quantos inteiros serão lidos: ");
     scanf ("%d", &tam);
@@ -22,29 +22,19 @@ int main (){
     }
 
     for(int i = 1; i <= tam; i++){
-        if (v[i] % 2 == 0)
-    {
-        printf("Sao pares: ? dos %d inteiros lidos.", tam);
+            if (v[i] % 2 == 0)
+        {
+            par = par + 1;
+        }
+        else
+        {
+            impar = impar + 1;
+        }
     }
-    }
     
+        printf("Sao pares: %d dos %d inteiros lidos.\n",par, tam);
+        printf("Sao impares: %d dos %d inteiros lidos.",impar, tam);
     
-    
-    
-    /*if (v[i] % 2 == 0)
-    {
-        printf("Sao pares:  dos %d inteiros lidos.", tam);
-    }
-
-    else
-    {
-        printf("Sao impares: %d dos %d inteiros lidos.",x, tam);
-    }*/
-    
-    
-        
-
-
-return 0;      
+    return 0;      
 }
 
