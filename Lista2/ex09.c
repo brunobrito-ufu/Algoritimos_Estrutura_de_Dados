@@ -20,8 +20,6 @@ int main(){
     scanf("%d", &CONSTANTE);
 
     calculo(&x, &y, CONSTANTE);
-
-  //  printf("%d", x);
     
     return 0;
 }
