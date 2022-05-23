@@ -22,7 +22,7 @@ int main (){
     if (v == NULL)
     {
         printf("Erro ao alocar memoria\n");
-        return 1;
+        return -1;
     }
     
   
