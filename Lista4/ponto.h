@@ -1,95 +1,50 @@
-TAD ponto;
+//TAD ponto;
+typedef struct Ponto Ponto;
 
-        Dados: O programa aplicativo deve ler as coordenadas de 2 pontos, digitadas pelo usuário e
-               imprimir na tela a distância entre esses pontos. Nesse processo, o programa deve criar
-               os 2 pontos, calcular a distância entre esses pontos e, após apresentar o resultado,
+        /*Dados: O programa aplicativo deve ler as coordenadas de 2 pontos, digitadas pelo usuÃ¡rio e
+               imprimir na tela a distÃ¢ncia entre esses pontos. Nesse processo, o programa deve criar
+               os 2 pontos, calcular a distÃ¢ncia entre esses pontos e, apÃ³s apresentar o resultado,
                liberar os dois pontos
-        Lista de operações: gera_pto, set_pto, get_pto, libera_pto, distancia_pto:
+        Lista de operaÃ§Ãµes: gera_pto, set_pto, get_pto, libera_pto, distancia_pto:
 
-Operações:
-        Operação gera_pto:
-            Entrada:
-            Pré-condição:
-            Processo: cria uma instância de um ponto sem valores.
-            Saída:
-            Pós-condição:
+OperaÃ§Ãµes:
+        OperaÃ§Ã£o gera_pto:*/
+Ponto *gera_pto(float x, float y);
+/*Entrada:
+PrÃ©-condiÃ§Ã£o:
+Processo: cria uma instÃ¢ncia de um ponto sem valores.
+SaÃ­da:
+PÃ³s-condiÃ§Ã£o:
 
-        Operação set_pto:
-            Entrada:
-            Pré-condição:
-            Processo: atribui os valores das coordenadas x e y de um ponto.
-            Saída:
-            Pós-condição:
+OperaÃ§Ã£o set_pto:*/
+void set_pto(Ponto *p, float x, float y);
+/*Entrada:
+PrÃ©-condiÃ§Ã£o:
+Processo: atribui os valores das coordenadas x e y de um ponto.
+SaÃ­da:
+PÃ³s-condiÃ§Ã£o:
 
-        Operação get_pto:
-            Entrada:
-            Pré-condição:
-            Processo: retorna os valores das coordenadas x e y de um ponto.
-            Saída:
-            Pós-condição:
+OperaÃ§Ã£o get_pto:*/
+float get_pto();
+/*Entrada:
+PrÃ©-condiÃ§Ã£o:
+Processo: retorna os valores das coordenadas x e y de um ponto.
+SaÃ­da:
+PÃ³s-condiÃ§Ã£o:
 
-        Operação libera_pto:
-            Entrada:
-            Pré-condição:
-            Processo: operação que elimina um ponto criado.
-            Saída:
-            Pós-condição:
+OperaÃ§Ã£o libera_pto:*/
+float libera_pto();
+/*Entrada:
+PrÃ©-condiÃ§Ã£o:
+Processo: operaÃ§Ã£o que elimina um ponto criado.
+SaÃ­da:
+PÃ³s-condiÃ§Ã£o:
 
-        Operação distancia_pto:
-            Entrada:
-            Pré-condição:
-            Processo: calcula a distância entre dois pontos.
-            Saída:
-            Pós-condição:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* TAD: Ponto (x,y) */
-/* Tipo exportado */
-typedef struct ponto Ponto;
-/* Funções exportadas */
-/* Função cria
-** Aloca e retorna um ponto com coordenadas (x,y)
+OperaÃ§Ã£o distancia_pto:*/
+float(Ponto *p1, Ponto *p2);
+/*Entrada:
+PrÃ©-condiÃ§Ã£o:
+Processo: calcula a distÃ¢ncia entre dois pontos.
+SaÃ­da:
+PÃ³s-condiÃ§Ã£o:
 */
-Ponto* cria (float x, float y);
-/* Função libera
-** Libera a memória de um ponto previamente criado.
-*/
-void libera (Ponto* p);
-/* Função acessa
-** Devolve os valores das coordenadas de um ponto
-*/
-void acessa (Ponto* p, float* x, float* y);
-/* Função atribui
-** Atribui novos valores às coordenadas de um ponto
-*/
-void atribui (Ponto* p, float x, float y);
-/* Função distancia
-** Retorna a distância entre dois pontos
-*/
-float distancia (Ponto* p1, Ponto* p2);
-
-
-
-
-
-
