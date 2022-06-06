@@ -9,15 +9,15 @@ typedef struct Ponto Ponto;
 
 Operações:
         Operação gera_pto:*/
-Ponto *gera_pto(float x, float y);
+Ponto* gera_pto(float x, float y);
 /*Entrada:
 Pré-condição:
 Processo: cria uma instância de um ponto sem valores.
-Saída:
+Saída: retorna um ponteiro para Ponto
 Pós-condição:
 
 Operação set_pto:*/
-void set_pto(Ponto *p, float x, float y);
+void set_pto(Ponto* p, float x, float y);
 /*Entrada:
 Pré-condição:
 Processo: atribui os valores das coordenadas x e y de um ponto.
@@ -29,11 +29,11 @@ float get_pto();
 /*Entrada:
 Pré-condição:
 Processo: retorna os valores das coordenadas x e y de um ponto.
-Saída:
+Saída: 
 Pós-condição:
 
 Operação libera_pto:*/
-float libera_pto();
+void libera_pto(Ponto* p);
 /*Entrada:
 Pré-condição:
 Processo: operação que elimina um ponto criado.
@@ -41,10 +41,10 @@ Saída:
 Pós-condição:
 
 Operação distancia_pto:*/
-float(Ponto *p1, Ponto *p2);
+float distancia_pto(Ponto* p1, Ponto* p2);
 /*Entrada:
 Pré-condição:
 Processo: calcula a distância entre dois pontos.
-Saída:
+Saída: retorna o resultado da distância entre dois pontos
 Pós-condição:
 */
