@@ -54,6 +54,7 @@ Processo: retorna um valor de um elemento selecionado.
 Saída: 0 para sucesso (obteve o valor), -1 para falha
 Pós-condição: nenhuma*/
 
+int imprime_lista(Lista l);
 
 
 
