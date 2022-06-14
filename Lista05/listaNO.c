@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "listaNO.h"
-#define max 20
+#define max 5
 
 struct Lista{
     int no[max];
@@ -12,9 +12,9 @@ Lista cria_lista(){
     Lista l;
     l = (Lista) malloc(sizeof(struct Lista));
 
-    l = (l =! NULL);
-    l->Fim = 0; //indicando uma lista vazia
-    return l;
+    if(l != NULL)
+        l->Fim = 0; //indicando uma lista vazia
+        return l;
 }
 
 int lista_vazia(Lista l){ //recebe o endereco
@@ -32,7 +32,7 @@ int lista_cheia(Lista l){
 }
 
 int insere_elem(Lista l, int elem){
-    if (l == NULL || lista_cheia(l) == 0)
+    if (l == NULL|| lista_cheia(l) == 0)
     return -1;
 
     l->no[l->Fim] = elem;   //insere
@@ -73,7 +73,13 @@ int obtem_valor_elem(Lista l, int elem){
 }
 
 int imprime_lista(Lista l){
-
+    if(l == NULL || lista_vazia(l) == 0){
+        return -1;
+    }else{
+        for(int i = 0; i < max; i++){
+            printf("Lista[%d] = %d\n", i, (*l).no[i]);
+        }
+    }
 }
 
 
