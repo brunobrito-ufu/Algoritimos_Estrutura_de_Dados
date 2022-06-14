@@ -12,7 +12,7 @@ Lista cria_lista(){
     Lista l;
     l = (Lista) malloc(sizeof(struct Lista));
 
-    l = (l =! NULL)
+    l = (l =! NULL);
     l->Fim = 0; //indicando uma lista vazia
     return l;
 }
@@ -25,7 +25,7 @@ int lista_vazia(Lista l){ //recebe o endereco
 }
 
 int lista_cheia(Lista l){
-    if (l->Fim == max) 
+    if (l->Fim == max)
     return 0;   //cheia
     else
     return -1;   //nao cheia
@@ -43,22 +43,42 @@ int insere_elem(Lista l, int elem){
 int remove_elem(Lista l, int elem){
     if (l == NULL || lista_vazia(l) == 0)
     return -1;
-    
+
     int i, aux = 0;
-    while (aux < l->Fim && l->no[aux] =! elem){ //percorre ate o fim da lista ou ate achar o elemento
+    while (aux < l->Fim && l->no[aux] != elem){ //percorre ate o fim da lista ou ate achar o elemento
         aux++;
     }
     if (aux == l->Fim) //chegou no fim sem achar o elem
     return -1;
-    
-    for (i = aux + 1; i < l->Fim; i++)
+
+    for (i = aux + 1; i < l->Fim; i++) //deslocmento à esquerda do sucessor até Fim
     l->no[i-1] = l->no[i]; //sobrepõe o elemento retirado
 
     l->Fim--;
     return 0;
 }
 
-    
+int obtem_valor_elem(Lista l, int elem){
+    if (l == NULL || lista_vazia(l) == 0)
+    return -1;
+
+    for(int i = 0; i < max; i++){
+        if(l->no[i] == elem){
+            return elem;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+
+int imprime_lista(Lista l){
+
+}
+
+
+
+
 
 
 
