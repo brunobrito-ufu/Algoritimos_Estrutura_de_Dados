@@ -41,32 +41,23 @@ Pós-condição: lista com um elemento inserido a mais
 Operação remove_elem:*/
 int remove_elem(Lista l, int elem);
 /*Entrada: endereço da lista e o elemento a remover
-Pré-condição: lista existir e nao estar vazia e o elemento estar na lista
+Pré-condição: lista existir, nao estar vazia e o elemento estar na lista
 Processo: remove um elemento da lista
 Saída: 1 para sucesso (removeu), 0 para falha
 Pós-condição: lista com um elemento a menos
 
 Operação obtem_valor_elem:*/
 int obtem_valor_elem(Lista l, int elem);
-/*Entrada:  endereço da lista e o elemento a obter o valor
-Pré-condição: lista nao estar vazia
+/*Entrada: endereço da lista e o elemento a obter o valor
+Pré-condição: lista existir e nao estar vazia 
 Processo: retorna um valor de um elemento selecionado.
 Saída: 0 para sucesso (obteve o valor), -1 para falha
-Pós-condição: nenhuma*/
+Pós-condição: nenhuma
 
+Operação imprime_lista:*/
 int imprime_lista(Lista l);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Entrada: endereço da lista
+Pré-condição: lista existir e nao estar vazia 
+Processo: imprime a lista com os valores inseridos
+Saída: 0 para sucesso (obteve o valor), -1 para falha
+Pós-condição: nenhuma*/
