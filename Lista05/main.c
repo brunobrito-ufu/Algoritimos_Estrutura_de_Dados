@@ -8,8 +8,8 @@ int main(){
     Lista lista;
     int op;
 
-
     do{
+        system("CLS || clear");
         do{
             printf(" --- LISTAS ESTATICAS SEQUENCIAIS --- \n\n");
             printf(" Escolha uma opcao:\n");
@@ -17,94 +17,95 @@ int main(){
             printf(" 2. Verificar lista vazia\n");
             printf(" 3. Verificar lista cheia\n");
             printf(" 4. Inserir elemento\n");
-            printf(" 5. Inserir elemento ordenado\n");
-            printf(" 6. Excluir elemento\n");
-            printf(" 7. Excluir elemento ordenado\n");
-            printf(" 8. Imprimir lista\n");
-            printf(" 9. SAIR\n");
+            printf(" 5. Excluir elemento\n");
+            printf(" 6. Imprimir lista\n");
+            printf(" 7. SAIR\n");
+            //printf(" 8. Inserir elemento ordenado\n");
+            //printf(" 9. Excluir elemento ordenado\n");
             printf(" Opcao: ");
             scanf("%d", &op);
-            if((op < 1) || (op > 9)) {
+            if((op < 1) || (op > 7)) {
 
                 printf("\n\n Opcao Invalida! Tente novamente...");
             }
-        } while((op < 1) || (op > 9));
+        }         
+        while((op < 1) || (op > 7));
 
         switch(op)
         {
             case 1:
-                printf("\n\n 1. Criar lista\n");
+                printf("\n1. Criar lista\n\n");
                 lista = cria_lista();
                 if(lista == NULL){
                     printf("Erro ao criar lista.\n");
                 }else{
-                    printf("Lista criada com sucesso.\n\n");
+                    printf("Lista criada com sucesso. Aperte qualquer tecla para continuar\n\n");
                 }
+                getch();
                 break;
 
             case 2:
-                printf("\n\n 2. Verificar lista vazia\n");
+                printf("\n2. Verificar lista vazia\n\n");
                 if(lista_vazia(lista) == 0){
-                    printf("A lista esta vazia.\n");
+                    printf("A lista esta vazia. Aperte qualquer tecla para continuar\n");
                 }else{
-                    printf("A lista contem um ou mais elementos.\n\n");
+                    printf("A lista contem um ou mais elementos. Aperte qualquer tecla para continuar\n\n");
                 }
+                getch();
                 break;
 
             case 3:
-                printf("\n\n Recurso ainda nao foi implementado...");
+                printf("\n3. Verificar lista cheia\n\n");
+                if(lista_cheia(lista) == 0){
+                    printf("A lista esta cheia. Aperte qualquer tecla para continuar\n");
+                }else{
+                    printf("A lista nao esta cheia. Aperte qualquer tecla para continuar\n\n");
+                }
                 getch();
                 break;
 
             case 4:
-                printf("\n\n 4. Inserir elemento\n");
+                printf("\n4. Inserir elemento\n\n");
                 printf("Digite o elemento a ser inserido: ");
                 int j;
-                scanf("%d", &j);
-                if(insere_elem(lista, j) == 0){
-                   printf("Elemento %d inserido com sucesso.\n", j);
-                   }else{
-                    printf("Falha ao inserir elemento. Lista nao criada ou lista esta cheia.\n");
+                scanf("%d", &j);                //usuario escolhe o elem a inserir
+                if(insere_elem(lista, j) == 0){ //se tiver como inserir, sucesso
+                   printf("Elemento %d inserido com sucesso. Aperte qualquer tecla para continuar\n", j);
+                   }else{                       //se nao, falha
+                    printf("Falha ao inserir elemento %d: lista nao criada ou lista cheia. Aperte qualquer tecla para continuar\n", j);
                    }
+                   getch();
                 break;
 
             case 5:
-                printf("\n\n Recurso ainda nao foi implementado...");
+                printf("\n5. Excluir elemento\n\n");
+                printf("Digite o elemento a ser removido: ");
+                int x;                
+                scanf("%d", &x); 
+                if(remove_elem(lista, x) == 0){
+                    printf("Elemento %d removido com sucesso. Aperte qualquer tecla para continuar\n", x);
+                }else{
+                    printf("Falha ao remover o elemento %d: lista nao criada, vazia ou o elemento nao pertence a lista. Aperte qualquer tecla para continuar\n", x);
+                }
                 getch();
                 break;
 
             case 6:
-                printf("\n\n Recurso ainda nao foi implementado...");
+            printf("\n6. Imprimir lista\n\n");
+            if (imprime_lista(lista) == 0){
+                printf("Lista impressa com sucesso. Aperte qualquer tecla para continuar\n");
+            }else{
+                printf("Falha ao imprimir lista: lista nao criada ou vazia. Aperte qualquer tecla para continuar\n");
+            }
                 getch();
                 break;
-
-            case 7:
-                printf("\n\n Recurso ainda nao foi implementado...");
-                getch();
-                break;
+    
 
             default:
 				printf("\n\n Pressione qualquer tecla para FINALIZAR...");
 				getch();
         }
-    } while(op != 9);
+    } while(op != 7);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   return 0;
 }
