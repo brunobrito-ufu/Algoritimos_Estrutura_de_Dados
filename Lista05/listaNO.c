@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "listaNO.h"
-#define max 5
+#define max 20
 
 struct Lista{
     int no[max];
@@ -62,7 +62,8 @@ int obtem_valor_elem(Lista l, int elem){
     if (l == NULL || lista_vazia(l) == 0)
     return -1;
 
-    for(int i = 0; i < max; i++){
+    int i;
+    for(i = 0; i < max; i++){
         if(l->no[i] == elem){
             return elem;
         }
@@ -76,19 +77,10 @@ int imprime_lista(Lista l){
     if(l == NULL || lista_vazia(l) == 0){
         return -1;
     }else{
-        for(int i = 0; i < max; i++){
-            printf("Lista[%d] = %d\n", i, (*l).no[i]);
+        int i;
+        for(i = 0; i < max; i++){
+            printf("Lista[%d] = %d\n", i, l->no[i]);
         }
     }
+    return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
