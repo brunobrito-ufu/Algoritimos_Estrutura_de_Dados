@@ -42,18 +42,17 @@ int insert_mortos(List *lst, char * name){
     List N = malloc (sizeof(struct node));    
 
     if(N == NULL)
-        return -1; //nó 
+        return -1; //falha ao alocar novo nó 
 
     strcpy(N->name, name);
 
     if(empty_list(*lst) == 0){
         N->next = N;
         *lst = N;
-
-        return 0;
+        return 0; 
     }   
 
-     if(list_size(lst) == 1){
+     if(list_size(*lst) == 1){
         (*lst)->next = N;
         N->next = *lst;
      }else{
@@ -61,78 +60,68 @@ int insert_mortos(List *lst, char * name){
         (*lst)->next = N;
     }
 
-    return 0; //morto inserido na lista de mortos
+    return 0; //soldado morto inserido na lista de mortos
 }
 
-int remove_soldier(List *lst, int nro){
-    List aux;
-    List last;
-    List aux2;
-
-    if(empty_list(*lst) == 0)
-        return -1;
-
-    aux = (*lst)->next;
-    last = *lst;
-    aux2 = aux;
-
-    if(size_list(*lst) == 1 && (*lst)->info == elem){   //lista so tem um elemento
-        *lst = NULL;
-        // printf("\nTo saindo aqui 0!!\n");
-        return 0;
-    
-    }else if(aux->info == elem){    //elem = primeiro da lista
-        (*lst)->next = aux->next;
-        free(aux);
-        // printf("\nTo saindo aqui 1!!\n");
-        return 0; 
-
-    }else if(last->info == elem){   //elem = último da lista
-        while(aux->next != last)
-            aux = aux->next;
-        *lst = aux;
-        (*lst)->next = aux2;
-        free(last);
-        // printf("\nTo saindo aqui 2!!\n");
-        return 0; 
-               
-    }else{
-        while(aux->next != last){
-            aux = aux->next;
-            if(aux->info == elem){
-                aux2->next = aux->next;
-                free(aux);
-                // printf("\nTo saindo aqui 3!!\n");
-                return 0;
-            }else{
-                aux2 = aux2->next;                
-            }            
-        }return -2;  //elemento nao esta na lista
-    
-    }
-}
-    // if(empty_list(lst) == 0)
-    //     return -1; //a lista está vazia
+int remove_soldier(List *soldados, List *mortos){   
+    if(empty_list(*soldados) == 0)
+        return -1;  //lista vazia
         
-    // List aux = (*lst)->next;
-    // List aux = (*lst)->next;    
-    // List aux = (*lst)->next;
+    List aux = (*soldados)->next;
+    List aux2 = *soldados;
+    List last = *soldados;
+    int j = 1, sorteado;  //"posicao[0]" = 1
+    char removido[20];
 
-    // int nro;
+    sorteado = sort_number(*soldados);
+
+    if(sorteado == 0)
+        return -5; //numero sorteado foi 0
 
 
-    // nro = sort_number(lst);
+    if(list_size(*soldados) == 1)
+        return 10;
 
-    // if(nro <= 0)
-    //     return -2; //nro sorteado é inválido, sorteie novamente
+    if(sorteado == 1){ //se for o primeiro
+        strcpy(removido, aux->name);
+        insert_mortos(mortos, removido);        
+        (*soldados)->next = aux->next;
+        free(aux);
+        return 0;
+    }
 
-    // return 0;
-//}
+    if(sorteado == list_size(*soldados)){//se for o ultimo
+
+        for(j; j < sorteado; j++){
+            aux = aux->next;
+            aux2 = aux2->next;
+    }
+
+        strcpy(removido, (*soldados)->name);
+        insert_mortos(mortos, removido);        
+        aux->next = (*soldados)->next;
+        *soldados = aux;
+        free(last);
+        return 0;
+    }
+
+    for(j; j < sorteado; j++){
+        aux = aux->next;
+        aux2 = aux2->next;
+    }
+
+    aux2->next = aux->next;
+    strcpy(removido, aux->name);
+    insert_mortos(mortos, removido);
+    free(aux);
+
+    return 0;
+}
 
 int number_soldier(List lst){
-    if(empty_list(lst) == 0){
+    if(empty_list(lst) == 0)
         return -1;
-    }
+    
     List aux = lst->next;
     List last = lst;
     int j = 1;
@@ -148,6 +137,7 @@ int number_soldier(List lst){
 
     return j;
 }
+
 int sort_number(List lst){
     int sorteio, tam;      
   
@@ -158,6 +148,9 @@ int sort_number(List lst){
 
     sorteio = (rand() % tam);
 
+    while(sorteio == 0)
+        sorteio = (rand() % tam);    
+
     return sorteio;
 }
 
@@ -165,9 +158,8 @@ int sort_number(List lst){
 int list_size(List lst){
     int size = 0;
 
-    if(lst == NULL){
+    if(lst == NULL)
         return size;
-    }
 
     size = 1;
 
@@ -179,4 +171,19 @@ int list_size(List lst){
         size++;
     }
     return size;
+}
+
+void print_list(List lst){
+    List last = lst;
+    if(empty_list(lst) == 0){
+        printf(": {");
+    }
+    else{
+        printf(": {");    
+        do{
+            printf((lst->next != last ) ? "%s, " : "%s", lst->next->name);
+            lst = lst->next;
+        }while(lst != last);        
+    }
+       
 }
