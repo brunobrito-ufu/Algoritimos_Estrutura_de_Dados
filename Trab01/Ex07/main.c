@@ -14,9 +14,9 @@ int main (){
         do{
             printf(" --- PROBLEMA DE JOSEPHUS --- \n\n");
             printf(" Escolha uma opcao:\n");
-            printf(" 1. Inicializar listas\n");
+            printf(" 1. Criar pelotao\n");
             printf(" 2. Inserir um novo soldado no pelotao\n");
-            printf(" 3. Remover um soldado qualquer do pelotao\n");
+            printf(" 3. Remover um soldado aleatorio do pelotao\n");
             printf(" 4. Imprimir nome do(s) soldados do pelotao\n");
             printf(" 5. Imprimir nome do(s) soldados eliminados\n");            
             printf(" 6. SAIR\n");
@@ -29,46 +29,76 @@ int main (){
         switch (op){
             
         case 1: 
-            printf("\n1 . CRIAR LISTAS \n\n");
+            printf("\n\n1 . Criar pelotao \n\n");
             List soldados, mortos;
             soldados = creat_list();
             mortos = creat_list();
 
-            printf("Listas criadas com sucesso! Aperte qualquer tecla para continuar...\n\n");
+            printf("Pelotao cridado com sucesso! Aperte qualquer tecla para continuar...\n\n");
             
             getch();
             break;
 
         case 2:
-            printf("\n2. Inserir um novo soldado no pelotao\n");
-            char nome[20];
+            printf("\n\n2. Inserir um novo soldado no pelotao\n\n");
+            char nome[30];
             int res2;
-            printf("\nDigite o nome do soldado: ");
-            fflush(stdin);
-            fgets(nome, 20, stdin);
+            printf("Digite seu nome: ");
+            scanf("%s",nome);
+            
 
-            res2 = insert_soldier_end(&lst, nome);
+            res2 = insert_soldier_end(&soldados, nome);
 
-            if(res2 == -1)
-                printf("/nSoldado inserido com sucesso. Aperte qualquer tecla para continuar...\n\n");
+            if(res2 == 0)
+                printf("\nSoldado %s inserido no pelotao com sucesso. Aperte qualquer tecla para continuar...\n\n",nome);
             else
-                printf("\nFalha ao inserir soldado! Aperte qualquer tecla para continuar\n\n");
+                printf("\nFalha ao inserir soldado! Aperte qualquer tecla para continuar...\n\n");
+
 
             getch();
             break;
 
         case 3:
-            printf(" 3. Remover um soldado qualquer do pelotao\n");
+            printf("\n\n3. Remover um soldado aleatorio do pelotao\n\n");
             
-            int res3;
-            
+            int res3, sorteado, pos;
 
-            res3 = insere
+            res3 = remove_soldier(&soldados, &mortos);
 
-            if(res2 == -1)
-                printf("/nSoldado inserido com sucesso. Aperte qualquer tecla para continuar...\n\n");
-            else
-                printf("\nFalha ao inserir soldado! Aperte qualquer tecla para continuar\n\n");
+            if(res3 == -1){
+                printf("\nFalha ao remover soldado, o pelotao esta vazio! Aperte qualquer tecla para continuar...\n\n");
+            }else if(res3 == -5){
+                printf("\nTente excluir novamente! Nro sorteado foi o ZERO. Aperte qualquer tecla para continuar...\n\n");            
+            }else if(res3 == 10){
+                printf("\nSo ha um soldado no pelotao! Ele eh o sobrevivente. Imprima a lista para ver o seu nome.\n");
+                printf("Aperte qualquer tecla para continuar...\n\n");
+            }else{
+                printf("\nSoldado removido com sucesso! Aperte qualquer tecla para continuar\n\n");
+            }
+
+            getch();
+            break;
+
+        case 4:
+            printf("\n\n4. Imprimir nome do(s) soldados do pelotao\n");
+
+            printf("\nPelotao");
+            print_list(soldados);
+            printf("}\n");
+
+            printf("\nPelotao impresso com sucesso! Aperte qualquer para continuar...\n\n");           
+
+            getch();
+            break;
+
+        case 5:
+            printf("\n\n5. Imprimir nome do(s) soldados eliminados\n");
+
+            printf("\nEliminados");
+            print_list(mortos);
+            printf("}\n");
+
+            printf("\nEliminados impresso com sucesso! Aperte qualquer para continuar...\n\n");  
 
             getch();
             break;
@@ -78,7 +108,7 @@ int main (){
             getch();
         }
 
-    }while(op != 7);
+    } while(op != 6);
 
-        return 0;
+    return 0;
 }
